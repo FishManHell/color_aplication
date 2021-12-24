@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
-import {addColor} from "../../redux/action/add_color";
+import {addColor} from "../../redux/action/actionForColor";
 import {useHistory} from "react-router-dom";
 
 const New = () => {
@@ -9,15 +9,16 @@ const New = () => {
     const [herColor, setHexColor] = useState({first: '', second: ''});
     const regHex =  /^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/i
 
+    const returnColor = () => {
+        dispatch(addColor(herColor))
+        history.push('/home')
+    }
+
     function push_color() {
         const color_one = herColor.first
         const color_two = herColor.second
-        if (regHex.test(color_one) && regHex.test(color_two)) {
-            dispatch(addColor(herColor))
-            history.push('/home')
-        } else {
-            alert('this is not hex color');
-        }
+
+        return regHex.test(color_one) && regHex.test(color_two) ? returnColor() : alert('there is no such color');
     }
     return (
         <div>

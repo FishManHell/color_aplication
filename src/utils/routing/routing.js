@@ -18,7 +18,7 @@ export const routing = [
     {
         title: 'Edit',
         component: Edit,
-        path: '/edit',
+        path: ['/edit', '/edit:id'],
         exact: false
     }
 ]
