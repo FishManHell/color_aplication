@@ -7,19 +7,19 @@ import {removeColor, returnColors} from "./redux/action/actionForColor";
 import Home from "./components/home/Home";
 import New from "./components/new/New";
 import Edit from "./components/edit/Edit";
-import {regHex} from "./utils/reg/regHex";
+import {regHex} from "./utils/regHex";
 
 function App() {
     const dispatch = useDispatch();
     const history = useHistory();
     const [changeColor, setChangeColor] = useState({id: '', color_one: '', color_two: ''});
 
-    const editColor = (color) => { // кидает тебя в компонент edit
+    const editColor = (color) => {
         history.push(`/edit/${color.id}`);
         setChangeColor(color)
     }
 
-    const deleteColor = color => { // удаляет obj из массива
+    const deleteColor = color => {
         dispatch(removeColor(color))
     }
 

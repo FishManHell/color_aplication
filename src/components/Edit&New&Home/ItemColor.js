@@ -5,7 +5,7 @@ import {
     WrapperItem
 } from "../../styled_components/HomeStyle";
 import {useLocation} from "react-router-dom";
-import ButtonsColorHome from "./ButtonsColorHome";
+import ButtonsColorHome from "../home/ButtonsColorHome";
 
 const ItemColor = ({color, edit, remove}) => {
     const location = useLocation()

@@ -2,15 +2,15 @@ import React, {useCallback, useEffect} from 'react';
 import {useSelector} from "react-redux";
 import {useHistory, useParams} from "react-router-dom";
 import {ButtonRoute, NewPage, WrapperPages} from "../../styled_components/wrapper";
-import ItemColor from "../home/ItemColor";
-import Inputs from "./Inputs";
+import ItemColor from "../Edit&New&Home/ItemColor";
+import Inputs from "../Edit&New&Home/Inputs";
 
 const Edit = ({changeColor, setChangeColor, dis}) => {
     const params = useParams();
     const history = useHistory();
     const colors = useSelector(state => state.arrayHexColors);
 
-    const functionChangeColor = (params) => { // проверяет - если цвет у которого id такой удаляет и заменяет
+    const functionChangeColor = (params) => {
         const index = colors.findIndex(item => item.id.includes(params))
         if (index > -1) {
             colors.splice(index, 1, changeColor);
@@ -19,14 +19,14 @@ const Edit = ({changeColor, setChangeColor, dis}) => {
         }
     }
 
-    const functionFindColor = useCallback(() => { // ищет obj
+    const functionFindColor = useCallback(() => {
         const colors = JSON.parse(localStorage.getItem('arrayColors'))
         const findColor = colors.find(item => item.id === params.id)
         setChangeColor(findColor)
         return findColor
     }, [params.id, setChangeColor]);
 
-    const check = (e, boolean) => { /// для контролируемого стейта func
+    const check = (e, boolean) => {
         const value = e.target.value
         return boolean ? setChangeColor({...changeColor, color_one: value}) : setChangeColor({
             ...changeColor,

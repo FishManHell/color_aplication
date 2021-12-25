@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {device} from "../utils/MediaSize";
 
 
 export const Wrapper = styled.div`
@@ -6,6 +7,7 @@ export const Wrapper = styled.div`
   height: 100%;
   max-width: 100%;
   background-color: #3299C4;
+  padding: 0 20px;
 `
 
 
@@ -49,6 +51,10 @@ export const WrapperInputs = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media all and ${device.mobileL} {
+   flex-direction: column;
+  }
 `
 
 export const Input = styled.input`

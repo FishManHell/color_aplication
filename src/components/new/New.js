@@ -3,14 +3,14 @@ import {addColor} from "../../redux/action/actionForColor";
 import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {ButtonRoute, NewPage, WrapperPages} from "../../styled_components/wrapper";
-import Inputs from "../edit/Inputs";
+import Inputs from "../Edit&New&Home/Inputs";
 
 const New = ({dis}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [hexColor, setHexColor] = useState({id: Date.now().toString(), color_one: '', color_two: ''});
 
-    const pushColor = () => { // кидает в массив obj - цвет и перенаправляет на home
+    const pushColor = () => {
         dispatch(addColor(hexColor))
         setHexColor({id: Date.now().toString(), color_one: '', color_two: ''})
         history.push('/home');

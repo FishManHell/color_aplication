@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {device} from "../utils/MediaSize";
 //ItemColor
 
 
@@ -14,6 +15,10 @@ export const WrapperItem = styled.div`
   margin-bottom: 10px;
   z-index: 1;
   border: ${props => props.border};
+  
+  @media all and ${device.mobileL} {
+    max-width: 100%;
+  }
 `
 
 export const BlockForTextItem = styled.div`
