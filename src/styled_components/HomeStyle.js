@@ -47,4 +47,5 @@ export const RemoveEditButton = styled.button`
   left: ${props => props.positionLeft};
   z-index: 2;
   cursor: pointer;
+  webkit-text-fill-color: #000
 `
