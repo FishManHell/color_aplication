@@ -48,7 +48,7 @@ function App() {
         console.log(colors)
     }
 
-    useEffect(() => { // из localStorage принимает
+    useEffect(() => { // из localStorage принимает в redux
         dispatch(returnColors())
     }, []);
 
