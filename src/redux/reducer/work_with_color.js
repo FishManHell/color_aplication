@@ -7,7 +7,7 @@ const initialState = {
 export const colorsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_COLOR:
-            const array = state.arrayHexColors
+            const array = [...state.arrayHexColors]
             array.push(action.payload);
             localStorage.setItem('arrayColors', JSON.stringify(array));
             return {...state, arrayHexColors: array};
@@ -18,13 +18,13 @@ export const colorsReducer = (state = initialState, action) => {
             }
             return {...state, arrayHexColors: colors};
         case REMOVE_COLOR:
-            const arrayColors = state.arrayHexColors
+            const arrayColors = [...state.arrayHexColors]
             const index = arrayColors.indexOf(action.payload)
             if (index > -1) {
                 arrayColors.splice(index, 1)
             }
             localStorage.setItem('arrayColors', JSON.stringify(arrayColors))
-            return {...state, arrayHexColors: arrayColors}
+            return {...state, arrayHexColors: arrayColors};
         default:
             return {...state}
     }

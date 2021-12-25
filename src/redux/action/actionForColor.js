@@ -1,7 +1,6 @@
-
-export const ADD_COLOR = 'ADD_COLOR'
-export const RETURN_COLORS = 'RETURN_COLORS'
-export const REMOVE_COLOR = 'REMOVE_COLOR'
+export const ADD_COLOR = 'ADD_COLOR';
+export const RETURN_COLORS = 'RETURN_COLORS';
+export const REMOVE_COLOR = 'REMOVE_COLOR';
 
 export const addColor = color => {
     return {
