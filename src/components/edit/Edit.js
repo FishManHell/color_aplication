@@ -1,30 +1,46 @@
-import React, {useMemo} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 
-const Edit = ({test, setTest, change}) => {
+const Edit = ({changeColor, setChangeColor}) => {
     const params = useParams();
+    const history = useHistory();
     const colors = useSelector(state => state.arrayHexColors);
 
-    const returnEditColor = useMemo(() => {
-        const idColor = params.id;
-        return colors.find(item => item.id === idColor)
-    }, [colors, params.id]);
-
-    const check = (e, boolean) => { /// меняет значения при нажатие всегда
-        const value = e.target.value
-        return boolean ? setTest({...test, first: value}) : setTest({...test, second: value})
+    const changeColorPageNew = (params) => { // проверяет - если цвет у которого id такой удаляет и заменяет
+        const index = colors.findIndex(item => item.id.includes(params))
+        if (index > -1) {
+            colors.splice(index, 1, changeColor);
+            localStorage.setItem('arrayColors', JSON.stringify(colors));
+            history.push('/home');
+        }
     }
+
+    const functionFindColor = useCallback(() => { // ищет obj
+        const colors = JSON.parse(localStorage.getItem('arrayColors'))
+        const findColor = colors.find(item => item.id === params.id)
+        setChangeColor(findColor)
+        return findColor
+    }, [params.id, setChangeColor]);
+
+    const check = (e, boolean) => { /// для контролируемого стейта func
+        const value = e.target.value
+        return boolean ? setChangeColor({...changeColor, color_one: value}) : setChangeColor({...changeColor, color_two: value})
+    }
+
+    useEffect(() => {
+        functionFindColor()
+    }, [])
 
     return (
         <div>
-          Edit
-            <input type="text" value={test?.first} onChange={e => check(e, true)}/>
-            <input type="text" value={test?.second} onChange={e => check(e, false)}/>
-            <div style={{background: `linear-gradient(${returnEditColor?.first}, ${returnEditColor?.second})`}}>
-                asdasdasdasdaddddddddddddddddddddddddddddddddd
-            </div>
-            <button onClick={() => change(params.id)}>asdasdas</button>
+            Edit
+            <input type="text" value={changeColor?.color_one} onChange={e => check(e, true)}/>
+            <input type="text" value={changeColor?.color_two} onChange={e => check(e, false)}/>
+            <h1 style={{background: `linear-gradient(${changeColor?.color_one}, ${changeColor?.color_two})`}}>
+                asdasdasdasd
+            </h1>
+            <button onClick={() => changeColorPageNew(params.id)}>asdasdas</button>
         </div>
     );
 };

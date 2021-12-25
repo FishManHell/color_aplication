@@ -1,7 +1,7 @@
 import {ADD_COLOR, REMOVE_COLOR, RETURN_COLORS} from "../action/actionForColor";
 
 const initialState = {
-    arrayHexColors: []
+    arrayHexColors: [],
 }
 
 export const colorsReducer = (state = initialState, action) => {

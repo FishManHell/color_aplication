@@ -1,10 +1,36 @@
-import React from 'react';
-const New = ({herColor, setHexColor, checkReg}) => {
+import React, {useState} from 'react';
+import {addColor} from "../../redux/action/actionForColor";
+import {regHex} from "../../utils/reg/regHex";
+import {useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
+
+const New = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const [hexColor, setHexColor] = useState({id: Date.now().toString(), color_one: '', color_two: ''});
+
+    const pushColor = () => { // кидает в массив obj - цвет и перенаправляет на home
+        dispatch(addColor(hexColor))
+        setHexColor({id: Date.now().toString(), color_one: '', color_two: ''})
+        history.push('/home');
+    }
+
+    const checkReg = () => { // проверяет регуляркой подходит ли цвет или нет
+        const color_one = hexColor.color_one
+        const color_two = hexColor.color_two
+        return regHex.test(color_one) && regHex.test(color_two) ? pushColor() : alert('there is no such color');
+    }
+
+    const controlValue = (e, boolean) => {
+        const value = e.target.value
+        return boolean ? setHexColor({...hexColor, color_one: value}) : setHexColor({...hexColor, color_two: value})
+    }
+
     return (
         <div>
-            <input type="text" value={herColor.first} onChange={e => setHexColor({...herColor, first: e.target.value})}/>
-            <input type="text" value={herColor.second} onChange={e => setHexColor({...herColor, second: e.target.value})}/>
-            <button onClick={checkReg}>Edit</button>
+            <input type="text" value={hexColor.color_one} onChange={e => controlValue(e, true)}/>
+            <input type="text" value={hexColor.color_two} onChange={e => controlValue(e, false)}/>
+            <button onClick={checkReg} disabled={!hexColor.color_one.match(regHex) || !hexColor.color_two.match(regHex)}>Edit</button>
         </div>
     );
 };
