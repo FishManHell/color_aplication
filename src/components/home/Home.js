@@ -2,7 +2,7 @@ import React from 'react';
 import {useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
 import ItemColor from "../Edit&New&Home/ItemColor";
-import Error from "../NoColor/Error";
+import Error from "../emptyArray/Error";
 import {ButtonRoute, NewPage, WrapperPages} from "../../styled_components/wrapper";
 
 const Home = ({edit, remove}) => {
