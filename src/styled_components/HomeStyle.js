@@ -1,12 +1,11 @@
 import styled from "styled-components";
-
 //ItemColor
 
 
 export const WrapperItem = styled.div`
   position: relative;
-  width: 200px;
-  height: 80px;
+  width: 400px;
+  height: 100px;
   padding: 10px;
   border-radius: 10px;
   display: flex;
@@ -14,6 +13,7 @@ export const WrapperItem = styled.div`
   background: linear-gradient(${props => props.gradient});
   margin-bottom: 10px;
   z-index: 1;
+  border: ${props => props.border};
 `
 
 export const BlockForTextItem = styled.div`

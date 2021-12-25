@@ -1,21 +1,21 @@
 import React from 'react';
 import {
     BlockForTextItem,
-    RemoveEditButton,
     TextItem,
     WrapperItem
 } from "../../styled_components/HomeStyle";
-import {Cross, Pencil} from "../../utils/Font Awesome/Solid";
+import {useLocation} from "react-router-dom";
+import ButtonsColorHome from "./ButtonsColorHome";
 
 const ItemColor = ({color, edit, remove}) => {
+    const location = useLocation()
     return (
-        <WrapperItem gradient={`${color.color_one}, ${color.color_two}`}>
+        <WrapperItem gradient={`${color.color_one}, ${color.color_two}`} border={'1px solid #000'}>
             <BlockForTextItem>
                 <TextItem>{color.color_one}</TextItem>
                 <TextItem>{color.color_two}</TextItem>
             </BlockForTextItem>
-            <RemoveEditButton positionRight={'-10px'} onClick={() => remove(color)}>{Cross}</RemoveEditButton>
-            <RemoveEditButton positionLeft={'-10px'} onClick={() => edit(color)}>{Pencil}</RemoveEditButton>
+            {location.pathname === `/edit/${color.id}` ? null : <ButtonsColorHome remove={remove} edit={edit} color={color}/>}
         </WrapperItem>
     );
 };
