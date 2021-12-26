@@ -35,6 +35,8 @@ export const ButtonRoute = styled.button`
   font-weight: 600;
   border-radius: 5px;
   margin: 10px;
+  color: black;
+  -webkit-text-decoration-color: black;
 `
 
 export const WrapperPages = styled.div`

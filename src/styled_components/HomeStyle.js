@@ -40,6 +40,7 @@ export const RemoveEditButton = styled.button`
   border-radius: 50%;
   font-size: 1.1rem;
   background: #fff;
+  color: #000;
   position: absolute;
   border: none;
   top: -10px;
@@ -47,5 +48,6 @@ export const RemoveEditButton = styled.button`
   left: ${props => props.positionLeft};
   z-index: 2;
   cursor: pointer;
+  -moz-text-decoration-color: #000;
   -webkit-text-fill-color: #000
 `
