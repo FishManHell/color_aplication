@@ -1,4 +1,3 @@
-import './App.css';
 import {Switch, Route, useHistory, Redirect} from "react-router-dom";
 import {Container, Wrapper} from "./styled_components/wrapper";
 import {useDispatch} from "react-redux";
