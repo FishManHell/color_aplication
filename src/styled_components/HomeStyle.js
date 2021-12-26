@@ -31,6 +31,8 @@ export const TextItem = styled.p`
   line-height: 1.2rem;
   font-weight: 600;
   color: ${colors.black};
+  filter: invert(1);
+  mix-blend-mode: difference;
 `
 
 export const RemoveEditButton = styled.button`
