@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import {device} from "../utils/MediaSize";
+import {colors} from "../utils/colors";
 
 
 export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   max-width: 100%;
-  background-color: #3299C4;
+  background-color: ${colors.light_blue};
   padding: 0 20px;
 `
 
@@ -29,14 +30,19 @@ export const NewPage = styled.h1`
 
 export const ButtonRoute = styled.button`
   text-transform: uppercase;
-  background: #81843E;
+  background: ${colors.swamp};
   padding: 5px;
   text-align: center;
   font-weight: 600;
   border-radius: 5px;
   margin: 10px;
-  color: black;
-  -webkit-text-decoration-color: black;
+  color: ${colors.black};
+  -webkit-text-decoration-color: ${colors.black};
+  
+  :disabled {
+    opacity: 0.5;
+  }
+  
 `
 
 export const WrapperPages = styled.div`

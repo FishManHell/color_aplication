@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import {device} from "../utils/MediaSize";
-//ItemColor
-
+import {colors} from "../utils/colors";
 
 export const WrapperItem = styled.div`
   position: relative;
@@ -31,7 +30,7 @@ export const TextItem = styled.p`
   font-size: 1.2rem;
   line-height: 1.2rem;
   font-weight: 600;
-  color: #000;
+  color: ${colors.black};
 `
 
 export const RemoveEditButton = styled.button`
@@ -39,8 +38,8 @@ export const RemoveEditButton = styled.button`
   height: 30px;
   border-radius: 50%;
   font-size: 1.1rem;
-  background: #fff;
-  color: #000;
+  background: ${colors.white};
+  color: ${colors.black};
   position: absolute;
   border: none;
   top: -10px;
@@ -48,6 +47,6 @@ export const RemoveEditButton = styled.button`
   left: ${props => props.positionLeft};
   z-index: 2;
   cursor: pointer;
-  -moz-text-decoration-color: #000;
-  -webkit-text-fill-color: #000
+  -moz-text-decoration-color: ${colors.black};
+  -webkit-text-fill-color: ${colors.black}
 `

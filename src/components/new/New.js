@@ -21,9 +21,12 @@ const New = ({dis}) => {
         return boolean ? setHexColor({...hexColor, color_one: value}) : setHexColor({...hexColor, color_two: value})
     }
 
+    const returnHome = () => history.push('/home')
+
     return (
         <WrapperPages>
             <NewPage>Add_New_Color</NewPage>
+            <ButtonRoute onClick={returnHome}>Back_Home</ButtonRoute>
             <Inputs color={hexColor} check={controlValue}/>
             <ButtonRoute onClick={pushColor} disabled={dis(hexColor.color_one, hexColor.color_two)}>Edit</ButtonRoute>
         </WrapperPages>
