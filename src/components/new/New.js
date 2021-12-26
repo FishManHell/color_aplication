@@ -28,7 +28,7 @@ const New = ({dis}) => {
             <NewPage>Add_New_Color</NewPage>
             <ButtonRoute onClick={returnHome}>Back_Home</ButtonRoute>
             <Inputs color={hexColor} check={controlValue}/>
-            <ButtonRoute onClick={pushColor} disabled={dis(hexColor.color_one, hexColor.color_two)}>Edit</ButtonRoute>
+            <ButtonRoute onClick={pushColor} disabled={dis(hexColor.color_one, hexColor.color_two)}>Save</ButtonRoute>
         </WrapperPages>
     );
 };
